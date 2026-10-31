@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101510">
+<title>Treino Premium</title>
+<style>
+:root {
+  --bg:#101510;
+  --panel:#1b241d;
+  --green:#43d477;
+  --white:#f5f8f5;
+  --muted:#a2afa4;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--white);
+  font-family:Arial,sans-serif;
+}
+header {
+  padding:22px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #29332b;
+}
+.logo {font-size:21px;font-weight:800}
+.logo span {color:var(--green)}
+main {padding:22px 18px 100px;max-width:700px;margin:auto}
+h1 {font-size:29px;margin:10px 0}
+p {color:var(--muted);line-height:1.5}
+.hero {
+  background:linear-gradient(135deg,#203e2a,#142219);
+  border:1px solid #31543b;
+  padding:25px;
+  border-radius:20px;
+  margin:20px 0;
+}
+.hero h2 {font-size:25px;margin:5px 0}
+button {
+  border:0;
+  border-radius:12px;
+  padding:13px 18px;
+  background:var(--green);
+  color:#102016;
+  font-weight:bold;
+  cursor:pointer;
+}
+.section-title {margin-top:28px}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.card {
+  background:var(--panel);
+  border:1px solid #2a352c;
+  border-radius:16px;
+  padding:17px;
+}
+.card .emoji {font-size:28px}
+.card h3 {margin:12px 0 5px}
+.card p {font-size:13px}
+.stat {font-size:26px;font-weight:bold;color:var(--green)}
+nav {
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#182019;
+  border-top:1px solid #303a32;
+  display:flex;
+  justify-content:space-around;
+  padding:12px 3px calc(12px + env(safe-area-inset-bottom));
+}
+nav button {
+  background:none;
+  color:var(--muted);
+  padding:7px 5px;
+  font-size:11px;
+}
+nav button.active {color:var(--green)}
+.page {display:none}
+.page.active {display:block}
+.wide {width:100%;margin-top:12px}
+.premium {
+  background:linear-gradient(140deg,#263c29,#18221a);
+  border:1px solid #47794e;
+  border-radius:18px;
+  padding:22px;
+  margin-top:20px;
+}
+input {
+  width:100%;
+  background:#202a22;
+  color:white;
+  border:1px solid #405044;
+  border-radius:10px;
+  padding:13px;
+  margin:8px 0;
+}
+.small {font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TREINO <span>PREMIUM</span></div>
+  <div>💚</div>
+</header>
+
+<main>
+  <section id="inicio" class="page active">
+    <p>SEJA BEM-VINDO AO SEU TREINO</p>
+    <h1>Sua evolução começa hoje!</h1>
+    <p>Sua casa. Seu ritmo. Sua evolução.</p>
+
+    <div class="hero">
+      <p>SEU PRÓXIMO PASSO</p>
+      <h2>Vamos treinar?</h2>
+      <p>Escolha um treino e comece a cuidar de você.</p>
+      <button onclick="go('treinos')">Começar agora →</button>
+    </div>
+
+    <h2 class="section-title">Seu resumo</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="emoji">🏋️</div>
+        <div class="stat">0</div>
+        <p>Treinos concluídos</p>
+      </div>
+      <div class="card">
+        <div class="emoji">🔥</div>
+        <div class="stat">0</div>
+        <p>Dias de sequência</p>
+      </div>
+    </div>
+
+    <div class="premium">
+      <h2>⭐ Conheça o Premium</h2>
+      <p>Mais treinos, desafios e recursos para sua evolução.</p>
+      <button onclick="go('premium')">Conhecer Premium</button>
+    </div>
+  </section>
+
+  <section id="treinos" class="page">
+    <h1>Biblioteca de treinos</h1>
+    <p>Escolha uma atividade para começar.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="emoji">💪</div>
+        <h3>Corpo inteiro</h3>
+        <p>20 minutos · Iniciante</p>
+        <button onclick="start('Corpo inteiro')">Começar</button>
+      </div>
+      <div class="card">
+        <div class="emoji">🦵</div>
+        <h3>Pernas e glúteos</h3>
+        <p>15 minutos · Iniciante</p>
+        <button onclick="start('Pernas e glúteos')">Começar</button>
+      </div>
+      <div class="card">
+        <div class="emoji">🔥</div>
+        <h3>Abdômen</h3>
+        <p>10 minutos · Intermediário</p>
+        <button onclick="start('Abdômen')">Começar</button>
+      </div>
+      <div class="card">
+        <div class="emoji">🏃</div>
+        <h3>Cardio em casa</h3>
+        <p>15 minutos · Intermediário</p>
+        <button onclick="start('Cardio em casa')">Começar</button>
+      </div>
+    </div>
+    <p class="small">Treinos demonstrativos. O conteúdo será revisado antes do lançamento.</p>
+  </section>
+
+  <section id="progresso" class="page">
+    <h1>Meu progresso</h1>
+    <p>Acompanhe sua evolução.</p>
+    <div class="cards">
+      <div class="card"><div class="stat" id="total">0</div><p>Treinos concluídos</p></div>
+      <div class="card"><div class="stat" id="minutes">0</div><p>Minutos treinados</p></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>🏆 Sua conquista</h3>
+      <p id="achievement">Seu primeiro treino ainda está esperando!</p>
+    </div>
+  </section>
+
+  <section id="premium" class="page">
+    <h1>Treino Premium ⭐</h1>
+    <div class="premium">
+      <h2>Desbloqueie sua evolução</h2>
+      <div class="stat">R$ 9,90 <span style="font-size:14px;color:white">/ mês</span></div>
+      <p>• Mais opções de treinos</p>
+      <p>• Desafios exclusivos</p>
+      <p>• Mais possibilidades de evolução</p>
+      <button class="wide" onclick="alert('A assinatura será integrada futuramente.')">Quero ser Premium</button>
+    </div>
+    <p class="small">Esta é uma demonstração. Nenhuma cobrança será realizada.</p>
+  </section>
+
+  <section id="perfil" class="page">
+    <h1>Meu perfil</h1>
+    <div class="card">
+      <div class="emoji">👤</div>
+      <h3>Seu espaço pessoal</h3>
+      <p>Personalize seu perfil.</p>
+      <label>Seu nome</label>
+      <input id="name" placeholder="Digite seu nome">
+      <button onclick="saveName()">Salvar nome</button>
+      <p id="saved"></p>
+    </div>
+  </section>
+</main>
+
+<nav>
+  <button class="active" onclick="go('inicio',this)">🏠<br>Início</button>
+  <button onclick="go('treinos',this)">🏋️<br>Treinos</button>
+  <button onclick="go('progresso',this)">📈<br>Progresso</button>
+  <button onclick="go('premium',this)">⭐<br>Premium</button>
+  <button onclick="go('perfil',this)">👤<br>Perfil</button>
+</nav>
+
+<script>
+let workouts = 0;
+let minutes = 0;
+
+function go(page, button) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  if(button) button.classList.add('active');
+  else {
+    const buttons = [...document.querySelectorAll('nav button')];
+    const index = ['inicio','treinos','progresso','premium','perfil'].indexOf(page);
+    buttons[index].classList.add('active');
+  }
+  window.scrollTo(0,0);
+}
+
+function start(name) {
+  if(confirm('Deseja iniciar o treino: ' + name + '?')) {
+    workouts++;
+    minutes += 10;
+    document.getElementById('total').textContent = workouts;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('achievement').textContent =
+      workouts === 1 ? '🏅 Primeiro treino iniciado!' : '🔥 Você já iniciou ' + workouts + ' treinos!';
+    alert('Treino demonstrativo iniciado! A execução completa será implementada na próxima versão.');
+    go('progresso');
+  }
+}
+
+function saveName() {
+  const name = document.getElementById('name').value.trim();
+  if(!name) {
+    alert('Digite seu nome primeiro.');
+    return;
+  }
+  document.getElementById('saved').textContent = 'Olá, ' + name + '! Seu nome foi atualizado nesta demonstração.';
+}
+</script>
+</body>
+</html>
